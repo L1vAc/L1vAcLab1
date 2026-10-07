@@ -652,14 +652,11 @@ int bitCount(int x) {
  *   Rating: 10
  */
 int bitReverse(int x){
-  int Chang6=0x55+(0x55<<8);
-  int Chang7=0x33+(0x33<<8);
-  int Chang8=0x0F+(0x0F<<8);
-  int Chang9=0xFF+(0xFF<<16);
   int Chang10=0xFF+(0xFF<<8);
-  Chang6+=(Chang6<<16);
-  Chang7+=(Chang7<<16);
-  Chang8+=(Chang8<<16);
+  int Chang9=Chang10^(Chang10<<8);
+  int Chang8=Chang9^(Chang9<<4);
+  int Chang7=Chang8^(Chang8<<2);
+  int Chang6=Chang7^(Chang7<<1);
   x=((x&Chang6)<<1)+((x>>1)&Chang6);
   x=((x&Chang7)<<2)+((x>>2)&Chang7);
   x=((x&Chang8)<<4)+((x>>4)&Chang8);
